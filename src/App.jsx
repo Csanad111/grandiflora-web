@@ -32,8 +32,9 @@ function LandingScreen({ onNavigate }) {
       {/* Extracted Logo Layer Overlay */}
       <div className="absolute top-[80px] w-full flex justify-center mix-blend-multiply pointer-events-none">
         <img
-          src="/assets/logo.png"
+          src="./assets/logo.png"
           alt="Grandiflora Logo"
+
           className="w-[220px] object-contain brightness-[1.03] contrast-[1.10]"
           style={{
             WebkitMaskImage: 'radial-gradient(ellipse 70% 70% at 50% 50%, black 60%, transparent 100%)',
@@ -686,7 +687,8 @@ export default function App() {
         {/* Background container (Shared exactly between pages) */}
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/assets/background-image-2.png"
+            src="./assets/background-image-2.png"
+
             alt="Háttér"
             className="w-full h-full object-cover pointer-events-none"
           />
