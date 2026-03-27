@@ -20,7 +20,7 @@ export default function LandingScreen({ onNavigate }) {
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-transparent via-white/60 to-white">
-      <Header />
+      <Header onNavigate={onNavigate} />
       <main className="w-full">
         {/* We map the Hero CTA directly to the form as requested */}
         <HeroSection onCtaClick={() => scrollToForm("Kertépítés")} />

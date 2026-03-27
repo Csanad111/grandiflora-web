@@ -1,4 +1,5 @@
 import { Camera, Mail, Phone } from "lucide-react";
+import logoIcon from "../../assets/figma/059c293333deaf670cb9e3e54dcb31770524a2e7.png";
 
 export function Footer() {
   return (
@@ -7,9 +8,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
           {/* Logo & Description */}
           <div>
-            <h3 className="font-['DM_Serif_Display'] text-2xl sm:text-3xl mb-4">
-              GRANDIFLORA
-            </h3>
+            <div className="flex items-center gap-3 mb-4">
+              <img 
+                src={logoIcon} 
+                alt="Grandiflora Logo" 
+                className="w-6 h-6 sm:w-8 sm:h-8 brightness-0 invert opacity-90"
+              />
+              <h3 className="font-['DM_Serif_Display'] text-2xl sm:text-3xl">
+                GRANDIFLORA
+              </h3>
+            </div>
             <p className="text-white/80 leading-relaxed mb-4 text-sm sm:text-base">
               Professzionális kertészeti szolgáltatások több mint 10 éves tapasztalattal.
             </p>
