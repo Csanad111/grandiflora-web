@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { LiquidGlassCard } from "./LiquidGlassCard";
 import { CheckCircle } from "lucide-react";
 
-export function ContactForm() {
+interface ContactFormProps {
+  prefilledService?: string;
+}
+
+export function ContactForm({ prefilledService = "" }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    email: ""
+    email: "",
+    serviceType: prefilledService
   });
+
+  useEffect(() => {
+    if (prefilledService) {
+      setFormData(prev => ({ ...prev, serviceType: prefilledService }));
+    }
+  }, [prefilledService]);
+
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -20,11 +32,11 @@ export function ContactForm() {
     // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: "", phone: "", email: "" });
+      setFormData({ name: "", phone: "", email: "", serviceType: prefilledService });
     }, 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -116,6 +128,33 @@ export function ContactForm() {
                     className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-[16px] bg-white/50 border border-white/60 backdrop-blur-md text-[#5e6e5e] placeholder-[#5e6e5e]/50 focus:outline-none focus:ring-2 focus:ring-[#5e6e5e] focus:border-transparent transition-all text-sm sm:text-base"
                     placeholder="email@example.com"
                   />
+                </div>
+
+                {/* Service Type Field */}
+                <div>
+                  <label
+                    htmlFor="serviceType"
+                    className="block text-[#5e6e5e] font-medium mb-2 text-sm sm:text-base"
+                  >
+                    Melyik szolgáltatásunk érdekli?
+                  </label>
+                  <select
+                    id="serviceType"
+                    name="serviceType"
+                    value={formData.serviceType}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-[16px] bg-white/50 border border-white/60 backdrop-blur-md text-[#5e6e5e] placeholder-[#5e6e5e]/50 focus:outline-none focus:ring-2 focus:ring-[#5e6e5e] focus:border-transparent transition-all text-sm sm:text-base appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled hidden>Válasszon szolgáltatást...</option>
+                    <option value="Kertépítés">Kertépítés</option>
+                    <option value="Kerttervezés">Kerttervezés</option>
+                    <option value="Faápolás">Faápolás</option>
+                    <option value="Öntözéstechnika">Öntözéstechnika</option>
+                    <option value="Ágdarálás">Ágdarálás</option>
+                    <option value="Kertfenntartás">Kertfenntartás</option>
+                    <option value="Egyéb">Egyéb</option>
+                  </select>
                 </div>
 
                 {/* Submit Button */}

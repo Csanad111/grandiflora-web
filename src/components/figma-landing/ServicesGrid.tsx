@@ -49,7 +49,7 @@ const services = [
 ];
 
 interface ServicesGridProps {
-  onServiceClick: () => void;
+  onServiceClick: (serviceName: string) => void;
 }
 
 export function ServicesGrid({ onServiceClick }: ServicesGridProps) {
@@ -103,7 +103,7 @@ export function ServicesGrid({ onServiceClick }: ServicesGridProps) {
                       {service.description}
                     </p>
                     <button
-                      onClick={onServiceClick}
+                      onClick={() => onServiceClick(service.title)}
                       className="bg-[#f3edf7] hover:bg-[#5e6e5e] hover:text-white text-[#5e6e5e] px-5 sm:px-6 py-2.5 sm:py-3 rounded-[20px] text-sm sm:text-base font-medium transition-all duration-300 inline-flex items-center gap-2"
                     >
                       Érdekel
