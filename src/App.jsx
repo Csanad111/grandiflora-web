@@ -92,7 +92,7 @@ function AppShell() {
       {/* Full-bleed Background container (Fixed to viewport) */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
         <img
-          src="/grandiflora-garden-builder/assets/background_v3.png"
+          src="/assets/background_v3.png"
           alt="Háttér"
           className="w-full h-full object-cover"
         />
